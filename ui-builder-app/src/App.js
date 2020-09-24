@@ -111,7 +111,7 @@ class App extends Component {
         },
         tasks: {
           ...this.state.tasks,
-          [uniqIdGenerator]: { id: uniqIdGenerator, type },
+          [uniqIdGenerator]: { id: uniqIdGenerator, type, label: type },
         },
       };
       this.setState(newState);
@@ -140,10 +140,28 @@ class App extends Component {
     });
   };
 
+  setLabel = (value) => {
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+      },
+      tasks: {
+        ...this.state.tasks,
+        [value.id]: {
+          id: value.id,
+          label: value.label,
+          type: value.type,
+        },
+      },
+    };
+    this.setState(newState);
+  };
+
   render() {
     const { columnOrder, columns } = this.state;
     return (
-      <div>
+      <div className="fullHeight">
         <Layout className="layout">
           <Header>
             <div className="header-container">Form Generator</div>
@@ -164,6 +182,7 @@ class App extends Component {
                           column={column}
                           tasks={tasks}
                           clearForm={this.clearFormHandler}
+                          labelHandler={this.setLabel}
                         />
                       );
                     })}

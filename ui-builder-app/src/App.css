@@ -4,9 +4,31 @@
   text-align: center;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.ant-layout {
+  min-height: 100%;
+}
+
 .task-container {
   margin-bottom: 8px;
   padding: 8px;
+}
+
+.label-button {
+  margin: 0 0 10px 5px;
+}
+
+.modal-input {
+  margin-top: 10px;
 }
 
 .column-container {
